@@ -46,12 +46,10 @@ namespace HOTEISMVC.Controllers
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             //Popular Lista de Quartos
-            var contexto = _context.Quarto.Where(q => q.Id_Hotel == id);
-            hotel.Quartos = (await contexto.ToListAsync());
-           
+            hotel.Quartos = GetQuartos(id);
+
             //Popular Lista de Fotos
-            var contextofotos = _context.Fotos.Where(f => f.Id_Hotel == id);
-            hotel.Fotos = (await contextofotos.ToListAsync());
+            hotel.Fotos = GetFotos(id);
 
             if (hotel == null)
             {
@@ -196,6 +194,30 @@ namespace HOTEISMVC.Controllers
         private bool HotelExists(int id)
         {
             return _context.Hotel.Any(e => e.Id == id);
+        }
+
+
+        /// <summary>
+        /// Consulta Quartos do Hotel
+        /// </summary>
+        /// <param name="id">Id do Hotel</param>
+        /// <returns>Lista de Quartos</returns>
+        private  List<Quarto> GetQuartos(int? id)
+        {
+            var contexto = _context.Quarto.Where(q => q.Id_Hotel == id);
+            return contexto.ToList();
+        }
+
+
+        /// <summary>
+        /// Retorna Lista de Fotos do Hotel
+        /// </summary>
+        /// <param name="id">Id do Hotel</param>
+        /// <returns>Lista de Fotos</returns>
+        private List<Fotos> GetFotos(int? id)
+        {
+            var contexto = _context.Fotos.Where(q => q.Id_Hotel == id);
+            return contexto.ToList();
         }
     }
 }

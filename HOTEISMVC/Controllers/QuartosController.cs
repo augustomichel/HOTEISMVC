@@ -204,5 +204,6 @@ namespace HOTEISMVC.Controllers
         {
             return _context.Quarto.Any(e => e.Id == id);
         }
+    
     }
 }

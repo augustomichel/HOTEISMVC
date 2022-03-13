@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+//credenciais do Banco de Dados
 builder.Services.AddDbContext<Contexto>
     (options => options.UseSqlServer
     ("Data Source=DESKTOP-TBSOHTP\\SQLEXPRESS;Initial Catalog=hoteisDB;integrated Security=TRUE"));
