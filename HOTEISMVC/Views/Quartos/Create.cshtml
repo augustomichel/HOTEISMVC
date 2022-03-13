@@ -1,0 +1,60 @@
+﻿@model HOTEISMVC.Models.Quarto
+
+@{
+    ViewData["Title"] = "Add";
+    
+}
+
+<h1>Adicionar</h1>
+
+<h4>Quarto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @if (ViewBag.habilita_combo){
+            <div class="form-group">
+                <label asp-for="Hotel"  class="control-label"></label>
+                <select asp-for="Id_Hotel" class ="form-control" asp-items="ViewBag.Id_Hotel"></select>
+            </div>
+            }
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumOcupantes" class="control-label"></label>
+                <input asp-for="NumOcupantes" class="form-control" />
+                <span asp-validation-for="NumOcupantes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumAdultos" class="control-label"></label>
+                <input asp-for="NumAdultos" class="form-control" />
+                <span asp-validation-for="NumAdultos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumCriancas" class="control-label"></label>
+                <input asp-for="NumCriancas" class="form-control" />
+                <span asp-validation-for="NumCriancas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Preco" class="control-label"></label>
+                <input asp-for="Preco" class="form-control" />
+                <span asp-validation-for="Preco" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Criar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="pt-2">
+    <a class="btn btn-secundary" asp-action="Index">Voltar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

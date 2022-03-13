@@ -1,0 +1,57 @@
+﻿@model IEnumerable<HOTEISMVC.Models.Hotel>
+
+@{
+    ViewData["Title"] = "Hotel";
+}
+
+<h1>Hoteis</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Add Hotel</a>
+</p>
+<table class="table table-striped">
+    <thead class="table-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CNPJ)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Endereco)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th></th>
+            <th></th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CNPJ)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Endereco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                <a asp-controller="Quartos" asp-action="Create" asp-route-id="@item.Id">Cadastrar Quarto</a>                
+            </td>
+            <td>
+                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Editar</a>           
+                <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Detalhes</a> 
+                <a class="btn btn-primary" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
